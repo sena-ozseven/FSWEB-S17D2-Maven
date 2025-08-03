@@ -56,12 +56,16 @@ public class DeveloperController {
          if (Objects.nonNull(createdDeveloper)) {
               developers.put(createdDeveloper.getId(), createdDeveloper);
          }
-         return new DeveloperResponse();
+         return new DeveloperResponse(createdDeveloper, HttpStatus.CREATED.value(), "developer has been created.");
     }
 
     @GetMapping
     public List<Developer> getAll() {
+        //STREAM API --> JAVA 8 API
         return developers.values().stream().toList();
     }
+
+    @GetMapping("/{id}")
+    public DeveloperResponse C
 
 }
