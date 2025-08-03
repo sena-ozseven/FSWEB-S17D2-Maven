@@ -1,5 +1,8 @@
 package tax;
 
+import org.springframework.stereotype.Component;
+
+@Component  //artık dependency injection ile b aşka bir class içerisinde başka bir component direkt çağırabiliyoruz.
 public class DeveloperTax implements Taxable{
     public static final Double SIMPLE_TAX_RATE = 15d;
     public static final Double MIDDLE_TAX_RATE = 25d;
