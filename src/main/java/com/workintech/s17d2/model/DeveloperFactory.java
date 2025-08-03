@@ -1,6 +1,6 @@
-package model;
+package com.workintech.s17d2.model;
 
-import tax.Taxable;
+import com.workintech.s17d2.tax.Taxable;
 
 public class DeveloperFactory {
     public static Developer createDeveloper(Developer developer, Taxable taxable) {
