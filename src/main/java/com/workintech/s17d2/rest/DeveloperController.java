@@ -66,6 +66,22 @@ public class DeveloperController {
     }
 
     @GetMapping("/{id}")
-    public DeveloperResponse C
+    public DeveloperResponse getById(@PathVariable("id") int id) {
+        Developer foundDeveloper = this.developers.get(id);
+        if (foundDeveloper == null) {
+             return new DeveloperResponse(null , HttpStatus.NOT_FOUND.value(), "developer with " + id + " id not found.");
+        }
+        return new DeveloperResponse(foundDeveloper, HttpStatus.OK.value(), "developer has been found.");
+    }
 
+
+    @PutMapping("/{id}")              //eski kaydın id'sini alıyor ve o id ile yeni kayıt yapıyor
+    public DeveloperResponse putById(@PathVariable("id") int id, @RequestBody Developer developer) {
+        developer.setId(id);
+        Developer newDeveloper = DeveloperFactory.createDeveloper(developer, taxable);
+        this.developers.put(id, newDeveloper);
+        return new DeveloperResponse(newDeveloper, HttpStatus.OK.value(), "update successful.");
+    }
+
+    
 }
