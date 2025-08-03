@@ -83,5 +83,10 @@ public class DeveloperController {
         return new DeveloperResponse(newDeveloper, HttpStatus.OK.value(), "update successful.");
     }
 
-    
+    @DeleteMapping("/{id}")
+    public DeveloperResponse deleteById(@PathVariable("id") int id) {
+        Developer removedDeveloper = this.developers.get(id);
+        this.developers.remove(id);
+        return new DeveloperResponse(removedDeveloper, HttpStatus.NO_CONTENT.value(), "developer has been deleted");
+    }
 }
